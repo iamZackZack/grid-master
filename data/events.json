@@ -1,0 +1,82 @@
+[
+  {
+    "id": 0,
+    "name": "You are safe!",
+    "description": "You may continue your turn. For now...",
+    "dc": null,
+    "dice": null,
+    "effect": "none",
+    "on_success": null,
+    "on_fail": null
+  },
+  {
+    "id": 1,
+    "name": "Collapsing Tunnel!",
+    "description": "The walls begin to shake and collapse around you! Make a Strength saving throw.",
+    "dc": 12,
+    "dice": "1d8",
+    "effect": "half",
+    "on_success": "You brace against the falling rocks and you dodge most of the falling rubble, but a few stones bruise you.",
+    "on_fail": "You brace against the falling rocks but a heavy rock strikes you hard, leaving you battered!"
+  },
+  {
+    "id": 2,
+    "name": "Flame Trap!",
+    "description": "You step on a dislocated pressure plate and jets of flame burst from hidden nozzles! Make an Agility saving throw.",
+    "dc": 14,
+    "dice": "1d6",
+    "effect": "half",
+    "on_success": "You roll and dive, narrowly escaping the searing flames! You are grazed by the fire but avoid the worst of it.",
+    "on_fail": "You roll and dive, trying to escape the searing flames but they engulf you, leaving painful burns!"
+  },
+  {
+    "id": 3,
+    "name": "Needle Trap!",
+    "description": "As you pass a narrow hallway, tiny needles fire from hidden holes. Make a Instinct saving throw.",
+    "dc": 13,
+    "dice": "3d4",
+    "effect": "none",
+    "on_success": "You twist and dodge gracefully, evading the needles!",
+    "on_fail": "You feel sharp pricks as the needles puncture your skin!"
+  },
+  {
+    "id": 4,
+    "name": "Poison Trap!",
+    "description": "You trip on a wire and trigger a hidden gas trap which releases a cloud of green mist! Make an Finesse saving throw.",
+    "dc": 15,
+    "dice": "1d10",
+    "effect": "half",
+    "on_success": "You hold your breath and dart through the mist! You inhale a little poison but resist most of its effects.",
+    "on_fail": "You try to hold your breath and dart through the mist but the toxic gas invades your lungs, weakening you!"
+  },
+  {
+    "id": 5,
+    "name": "Arcane Rune Trap!",
+    "description": "You step on an ancient rune that triggers a magical backlash. Make a Knowledge saving throw.",
+    "dc": 16,
+    "dice": "2d8",
+    "effect": "none",
+    "on_success": "You recognize the rune's pattern just in time to shield yourself and deflect its power!",
+    "on_fail": "You do not recognize the rune's pattern and the full force of the rune explodes into you, burning your flesh and spirit!"
+  },
+  {
+    "id": 6,
+    "name": "The Haunting!",
+    "description": "A ghostly song tempts you toward danger. Make a Charisma saving throw.",
+    "dc": 14,
+    "dice": "1d12",
+    "effect": "none",
+    "on_success": "You resist the haunting melody, standing your ground!",
+    "on_fail": "You are drawn forward helplessly into hidden danger!"
+  },
+  {
+    "id": 7,
+    "name": "Healing Potion!",
+    "description": "You find a small healing potion. You regain some hit points!",
+    "dc": null,
+    "dice": "2d6",
+    "effect": "heal",
+    "on_success": null,
+    "on_fail": null
+  }
+]
