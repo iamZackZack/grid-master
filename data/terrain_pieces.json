@@ -1,0 +1,344 @@
+[
+  {
+    "id":"A",
+    "rotation":0,
+    "home":11,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 0, 0, 1], [1, 1, 0, 0, 1], [1, 1, 0, 0, 0], [1, 0, 0, 1, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 0, 0, 1], [1, 1, 1, 1, 1], [1, 1, 0, 1, 0], [1, 0, 1, 0, 1]
+    ]
+  },
+  {
+    "id":"B",
+    "rotation":0,
+    "home":12,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 1, 0, 1], [1, 0, 0, 0, 0], [0, 0, 1, 0, 1], [1, 0, 1, 1, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 0], [1, 0, 1, 0, 1]
+    ]
+  },
+  {
+    "id":"C",
+    "rotation":0,
+    "home":13,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":"wizardE","occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 0, 0, 1], [0, 1, 0, 0, 1], [1, 1, 1, 1, 1], [1, 0, 1, 0, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 1, 0, 1], [1, 0, 0, 0, 0], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1]
+    ]
+  },
+  {
+    "id":"D",
+    "rotation":0,
+    "home":21,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":"barbarianE","occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 0, 0, 1], [1, 0, 1, 0, 0], [1, 1, 1, 0, 1], [1, 1, 0, 1, 1]
+    ],
+    "vertical_walls": [
+      [1, 1, 0, 0, 1], [1, 0, 1, 0, 0], [0, 0, 0, 0, 1], [1, 0, 0, 0, 1]
+    ]
+  },
+  {
+    "id":"E",
+    "rotation":0,
+    "home":22,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":"barbarianS","occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":"clericS","occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":"rogueS","occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":"wizardS","occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 1, 1, 1], [0, 0, 0, 0, 1], [1, 1, 0, 0, 0], [1, 0 ,1, 1, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 1, 0, 1], [1, 0, 0, 0, 0], [0, 0, 0, 0, 1], [1, 0, 0, 0, 1]
+    ]
+  },
+  {
+    "id":"F",
+    "rotation":0,
+    "home":23,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 0, 0, 1], [1, 1, 0, 1, 1], [0, 0, 0, 0, 1], [1, 0, 0, 1, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 1, 1, 1], [0, 1, 0, 0, 1], [1, 0, 1, 0, 0], [1, 0, 1, 0, 1]
+    ]
+  },
+  {
+    "id":"G",
+    "rotation":0,
+    "home":31,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":"clericE","occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 1, 1, 1], [1, 0, 1, 0, 1], [1, 1, 0, 1, 0], [1, 0, 1, 0, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 0, 0, 1], [0, 0, 1, 0, 1], [1, 0, 0, 1, 1], [1, 0, 0, 0, 1]
+    ]
+  },
+  {
+    "id":"H",
+    "rotation":0,
+    "home":32,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 0, 1, 1], [1, 1, 1, 0, 0], [0, 1, 0, 0, 1], [1, 0, 1, 0, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 1, 0, 1], [0, 0, 0, 0, 1], [1, 0, 1, 1, 1], [1, 0, 0, 0, 1]
+    ]
+  },
+  {
+    "id":"I",
+    "rotation":0,
+    "home":33,
+    "placement":0,
+    "cells":[
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":"rogueE","occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": true},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ],
+      [
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false},
+        {"global":null,"effect":null,"occupied":false, "exit": false}
+      ]
+    ],
+    "horizontal_walls": [
+      [1, 0, 0, 1, 1], [0, 1, 0, 1, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1]
+    ],
+    "vertical_walls": [
+      [1, 0, 0, 0, 1], [1, 1, 0, 1, 1], [0, 0, 1, 0, 1], [1, 0, 0, 0, 1]
+    ]
+  }
+]
