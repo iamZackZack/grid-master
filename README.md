@@ -19,18 +19,21 @@ The project integrates multiple components:
 
 ## Repository Structure
 
+Repository Structure
+
+```
 grid-master/
 ├── src/                # Python scripts (server + Orange Pi GPIO)
-│   ├── server.py       # Server for forwarding and API handling
+│   ├── server.py       # Backend server for forwarding and API handling
 │   └── detect_key_presses.py  # Orange Pi GPIO matrix detection
 ├── frontend/           # index.html, scripts.js, styles.css
-├── data/               # Template JSON game data
-├── cpee/               # CPEE XML/SVG workflows
-├── hardware/           # STL files, diagrams, screenshots
+├── data/               # JSON game data (grid, players, events)
+├── cpee/               # CPEE XML/SVG workflows (game logic)
+├── hardware/           # STL files, wiring diagrams, screenshots
 │   ├── diagrams/
 │   ├── screenshots/
 │   └── stl/
 ├── requirements.txt    # Combined Python dependencies
 ├── .gitignore          # Clean repo management
 ├── README.md           # This write-up
-
+```
