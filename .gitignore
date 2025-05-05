@@ -1,0 +1,39 @@
+# === Python bytecode ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === Logs, temp files ===
+*.log
+*.bak
+*.tmp
+
+# === OS and editor junk ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Environment & build ===
+.env
+.venv/
+env/
+venv/
+build/
+dist/
+
+# === Project-specific ignores ===
+# STL & CAD exports
+*.step
+*.iges
+
+# STL ZIPs
+*.zip
+hardware/stl/*.zip
+
+# Systemd and script backups
+*.service~
+setup.sh~
+
+# Node-related (just in case you use a build tool for frontend)
+node_modules/
