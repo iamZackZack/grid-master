@@ -152,3 +152,11 @@ The Orange Pi will now auto-login, auto-connect to wifi and run the grid input s
 * Load programs via USB stick (rotate, pick, place).
 * Set robot to Remote Control mode.
 * Robot responds to CPEE calls triggered from backend.
+
+## Credits
+
+* **Course**: Sustainable Process Automation: Humans, Software, and the Mediator Pattern (TUM)
+* **Student**: Zeka(Zack) Dizdar, Matriculation No: 03771147
+* **Supervisor**: Dr. Jürgen Mangler
+
+## References
