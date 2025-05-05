@@ -1,1 +1,5 @@
+# === Lehre Server (src/server.py) ===
+bottle==0.13.2
 
+# === Orange Pi (src/detect_key_presses.py) ===
+requests
