@@ -62,11 +62,11 @@ grid-master/
 3. Once all players are placed and initiative is set, CPEE enters a loop to manage initiative-based turns.
 4. For each player turn:
 
-   * CPEE assigns a random event (or skip)
+   * CPEE assigns a random event
    * Sends the current player and event data to the frontend
-   * Waits for updated player + grid state (via Lehre server backend)
+   * Waits for updated player + grid state based on movement data and dice checks
 5. If the updated state indicates a new terrain piece is needed, CPEE triggers UR5 rotation and placement routines.
-6. The turn loop continues until the game ends.
+6. The turn loop continues until the game end conditions are met, which for now are that all players have found and reached their escape locations.
 
 ## Game Design Summary
 
