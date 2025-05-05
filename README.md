@@ -153,6 +153,12 @@ The Orange Pi will now auto-login, auto-connect to wifi and run the grid input s
 * Set robot to Remote Control mode.
 * Robot responds to CPEE calls triggered from backend.
 
+## Demo Video
+
+Watch a short demo of Grid Master in action, showing terrain placement, player interaction, and robot control:
+
+🔗 [Watch on YouTube](https://youtu.be/abc123XYZ)
+
 ## Credits
 
 * **Course**: Sustainable Process Automation: Humans, Software, and the Mediator Pattern (TUM)
