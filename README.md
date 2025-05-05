@@ -6,6 +6,14 @@
 
 Grid Master is a hybrid physical-digital game system where a UR5 robotic arm acts as a dynamic Game Master for a Tabletop Role-Playing Game. Upto 4 Players can explore a 12x12 modular terrain grid, interact via physical button presses tracked by a custom Orange Pi matrix, and engage in a TTRPG-inspired narrative managed through real-time game logic executed via CPEE. The system blends robotics, embedded computing, and BPMN-style process automation to create an immersive dungeon crawler experience.
 
+## Motivation
+
+The goal of this project was to explore how automation, robotics, and human interaction can be orchestrated through process-oriented software architecture. Inspired by tabletop role-playing games like Dungeons & Dragons, the system reimagines the role of a Game Master as a robotic mediator within a structured, rule-driven environment.
+
+By combining physical interfaces (keyboard matrix), programmable robot behavior (UR5), and process automation (CPEE), this project demonstrates how human-centric gameplay can be moderated and managed by a non-human agent. It highlights how complex decision-making and sequential logic can be visualized, modeled, and executed using cloud-based process engines.
+
+This system also showcases how real-time human input (via physical movement) can be integrated with dynamic robot action, illustrating key concepts in sustainable automation, digital twins, and human-machine symbiosis.
+
 ## System Overview
 
 The project integrates multiple components:
@@ -18,8 +26,6 @@ The project integrates multiple components:
 * **Frontend Visualizer** — A web interface displays the grid, handles player setup, and event interaction.
 
 ## Repository Structure
-
-Repository Structure
 
 ```
 grid-master/
@@ -37,3 +43,15 @@ grid-master/
 ├── .gitignore          # Clean repo management
 ├── README.md           # This write-up
 ```
+
+## Technologies Used
+
+| Component        | Stack                               |
+| ---------------- | ----------------------------------- |
+| Embedded Input   | Orange Pi Zero 2W + WiringOP        |
+| Backend Server   | Python + Bottle                     |
+| Process Engine   | CPEE (XML workflows)                |
+| Robot Controller | UR5 Robot Arm (via USB + IP)        |
+| Frontend         | HTML, JS, CSS (manual + auto logic) |
+| Communication    | HTTP, JSON                          |
+
