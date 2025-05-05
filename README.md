@@ -76,3 +76,79 @@ grid-master/
 * Dynamic terrain placement via UR5 ensures modular gameplay.
 * Game logic includes physical dice rolls, stat-based checks, event outcomes, and real-time feedback.
 * Entire turn logic, event distribution, and robot coordination is handled by **CPEE**.
+
+## Setup Instructions
+
+### Lehre Server Setup
+
+* Install dependency:
+
+  ```bash
+  pip install bottle
+  ```
+
+* Run `src/server.py`
+* Host `frontend/index.html`
+
+### Orange Pi Setup
+
+This project sets up an **Orange Pi Zero 2W** running **Armbian** to automatically:
+
+* Use **WiringOP** for accessing GPIO pins via terminal
+* Connect to **Wi-Fi** on boot
+* Enable **auto-login** to terminal
+* Run a **GPIO key press detection script** (`detect_key_presses.py`)
+
+#### 1. Flash Armbian Image
+
+* Download from [armbian.com](https://www.armbian.com/orange-pi-zero-2/)
+* Flash with Raspberry Pi Imager or Balena Etcher
+
+#### 2. Install WiringOP
+
+```bash
+git clone https://github.com/zhaolei/WiringOP.git -b h3
+cd WiringOP
+chmod +x ./build
+sudo ./build
+```
+
+#### 3. Connect to Wi-Fi Automatically
+
+Edit WPA config:
+
+```bash
+sudo nano /etc/wpa_supplicant/wifi.conf
+```
+
+Configure `wifi.service` and enable it.
+
+#### 4. Enable Auto-Login:
+
+```bash
+sudo systemctl edit getty@tty1
+```
+
+Add autologin directive.
+
+#### 5. Auto-Run Script on Boot:
+
+Create `detect-keys.service`:
+
+```bash
+sudo nano /etc/systemd/system/detect-keys.service
+```
+
+Set it to run `/home/your_username/detect_key_presses.py` with log output. Enable the service:
+
+```bash
+sudo systemctl enable detect-keys.service
+```
+
+The Orange Pi will now auto-login, auto-connect to wifi and run the grid input script on boot.
+
+### UR5 Robot Setup
+
+* Load programs via USB stick (rotate, pick, place).
+* Set robot to Remote Control mode.
+* Robot responds to CPEE calls triggered from backend.
