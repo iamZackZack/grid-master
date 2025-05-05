@@ -1,0 +1,151 @@
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+}
+
+#main-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+#welcome-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#welcome-message {
+  font-size: 1.5rem;
+  max-width: 600px;
+  padding: 2rem;
+  border: 2px solid #444;
+  background: #222;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #000;
+}
+
+#setup-container {
+  display: block;
+  text-align: center;
+}
+
+#character-selection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.player-card {
+  width: 250px;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  font-size: 14px;
+  color: white;
+}
+
+.rogue-card    { background: #b22222; }  /* dark red */
+.barbarian-card { background: #2e8b57; }  /* sea green */
+.cleric-card    { background: #daa520; }  /* goldenrod */
+.wizard-card    { background: #6a5acd; }  /* slate blue */
+
+.player-card h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 0.3rem;
+}
+
+.stat-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+
+.stat-label {
+  font-weight: bold;
+  color: white;
+}
+
+.stat-text {
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 40px);
+  grid-template-rows: repeat(12, 40px);
+  gap: 2px;
+  background-color: #333;
+  padding: 10px;
+  border: 2px solid #555;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 1px solid #444;
+  color: white;
+  position: relative;
+}
+
+.terrain { background-color: #666; }
+
+.occupied { background-color: #28a745; }
+.rogue { background-color: #b22222; }
+.wizard { background-color: #6a5acd; }
+.cleric { background-color: #daa520; }
+.barbarian { background-color: #2e8b57; }
+
+.wall-top {  border-top: 3px solid #eee; }
+
+.wall-bottom { border-bottom: 3px solid #eee; }
+
+.wall-left { border-left: 3px solid #eee; }
+
+.wall-right { border-right: 3px solid #eee; }
+
+.sidebar {
+  width: 350px;
+  background-color: #222;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #555;
+  min-height: 250px;
+  color: #ccc;
+}
