@@ -22,7 +22,7 @@ The project integrates multiple components:
 * **12x12 Grid** — Physical surface embedded with 144 mechanical keyboard switches for position detection.
 * **Orange Pi Zero 2W** — Handles real-time key press detection via GPIO and sends movement data to the backend.
 * **CPEE** — Cloud Process Execution Engine serves as the central game logic controller, managing game setup, player turns, assigning events, detecting end game conditions, and calling robot actions.
-* **Lehre Server** — Hosts the Bottle server (server.py) and forwards updated player and grid state to CPEE.
+* **Server** — Hosts the Bottle server (server.py) and forwards updated player and grid state to CPEE.
 * **Frontend Visualizer** — A web interface displays the grid, handles player setup, and event interaction.
 
 ## Repository Structure
@@ -55,3 +55,24 @@ grid-master/
 | Frontend         | HTML, JS, CSS (manual + auto logic) |
 | Communication    | HTTP, JSON                          |
 
+## How It Works
+
+1. CPEE sends a welcome message and character setup prompt to the frontend.
+2. Players step on character symbols on the 12x12 grid. Orange Pi detects movement and sends it to the server.
+3. Once all players are placed and initiative is set, CPEE enters a loop to manage initiative-based turns.
+4. For each player turn:
+
+   * CPEE assigns a random event (or skip)
+   * Sends the current player and event data to the frontend
+   * Waits for updated player + grid state (via Lehre server backend)
+5. If the updated state indicates a new terrain piece is needed, CPEE triggers UR5 rotation and placement routines.
+6. The turn loop continues until the game ends.
+
+## Game Design Summary
+
+* Players choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
+* Each character has unique stats (HP, armor, movement, stats).
+* Physical input drives a digital turn-based game loop.
+* Dynamic terrain placement via UR5 ensures modular gameplay.
+* Game logic includes physical dice rolls, stat-based checks, event outcomes, and real-time feedback.
+* Entire turn logic, event distribution, and robot coordination is handled by **CPEE**.
