@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Master</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="welcome-container">
+    <div id="welcome-message">Loading...</div>
+  </div>
+
+  <div id="main-wrapper">
+    <div id="setup-container" style="display:none;">
+      <div id="character-selection"></div>
+      <div id="player-count-input"></div>
+      <div id="individual-selection-inputs"></div>
+      <div id="initiative-inputs"></div>
+      <div id="start-game" style="margin-top: 2rem;"></div>
+    </div>
+
+    <div id="visualizer-container" style="display:none;">
+      <h1>Dungeon Grid Visualizer</h1>
+      <div class="container">
+        <div id="grid" class="grid"></div>
+        <div id="sidebar" class="sidebar"></div>
+      </div>
+      <div id="event-area" style="margin-top:2rem;"></div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
