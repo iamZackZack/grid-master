@@ -98,7 +98,7 @@ This project sets up an **Orange Pi Zero 2W** running **Armbian** to automatical
 #### 1. Flash Armbian Image
 
 * For this project, an [armbian.com](https://www.armbian.com/orange-pi-zero-2/) image was found to be the most suitable.
-* I flashed the SD using Balena Etcher.
+* I flashed the SD with the image using Balena Etcher.
 
 #### 2. Install WiringOP
 
@@ -125,7 +125,7 @@ For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi
 
 * Create or load programs (rotate, pick, place).
 * Set robot to Remote Control mode.
-* Robot responds to CPEE calls triggered from backend.
+* Robot responds to CPEE calls.
 
 ## Demo Video
 
@@ -140,3 +140,10 @@ Here is a "short" demo of Grid Master in action, showing player interaction, eve
 * **Supervisor**: Dr. Jürgen Mangler
 
 ## References
+
+* [CPEE Documentation](https://cpee.org/)
+* [Mangler, Juergen, and Stefanie Rinderle-Ma. *Cloud Process Execution Engine: Architecture and Interfaces* (2022)](https://arxiv.org/abs/2208.12214)
+* [Orange Pi Zero 2W User Manual (v1.1)](https://drive.google.com/file/d/1K_spg7JaCM1ylp_LiVXpsoFRr6O7jnBA/view?usp=sharing) – Shenzhen Xunlong Software Co., Ltd.
+* [Armbian Project](https://www.armbian.com/)
+* [WiringOP GPIO Access](https://github.com/zhaolei/WiringOP)
+* [Universal Robots URScript Guide](https://www.universal-robots.com/articles/)
