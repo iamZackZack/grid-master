@@ -1,0 +1,11 @@
+ Program
+   Robot Program
+     MoveJ
+       home
+       inter1
+       inter2
+       inter3
+       inter4
+       grid_base_hover
+     Gripper Activate
+     Gripper Close (1)

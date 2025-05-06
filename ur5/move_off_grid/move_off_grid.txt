@@ -1,0 +1,27 @@
+ Program
+   Robot Program
+     tile_pos_id≔11
+     grid_pos_id≔22
+     ter_hover_pos≔p[0,0,0,0,0,0]
+     ter_lower_pos≔p[0, 0, 0, 0, 0, 0]
+     grid_hover_pos≔p[0,0,0,0,0,0]
+     grid_lower_pos≔p[0,0,0,0,0,0]
+     Script: hov_offset_calc2.script
+     MoveL
+       grid_hover_pos
+     Gripper Move75% (1)
+     MoveL
+       grid_lower_pos
+     Gripper Close (1)
+     MoveJ
+       grid_hover_pos
+     MoveL
+       ter_hover_pos
+     MoveL
+       ter_lower_pos
+     Gripper Move75% (1)
+     MoveL
+       ter_hover_pos
+     Gripper Close (1)
+     MoveL
+       ter_base_hover

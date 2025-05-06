@@ -1,0 +1,30 @@
+ Program
+   Robot Program
+     tile_pos_id≔22
+     num_rotations≔2
+     rotated≔0
+     grid_hover_pos≔p[0,0,0,0,0,0]
+     grid_lower_pos≔p[0,0,0,0,0,0]
+     grid_hov_rot≔p[0,0,0,0,0,0]
+     grid_hov_move≔p[0,0,0,0,0,0]
+     grid_low_rot≔p[0,0,0,0,0,0]
+     Script: rot_grid_offset.script
+     Loop rotated < num_rotations
+       MoveL
+         grid_hover_pos
+       Gripper Move75% (1)
+       MoveL
+         grid_lower_pos
+       Gripper Close (1)
+       MoveL
+         grid_hover_pos
+         grid_hov_rot
+         grid_hov_move
+         grid_low_rot
+       Gripper Move75% (1)
+       MoveL
+         grid_hov_move
+       rotated≔rotated + 1
+     MoveL
+       grid_base_hover
+     Gripper Close (1)

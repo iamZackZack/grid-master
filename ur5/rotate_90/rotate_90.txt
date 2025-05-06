@@ -1,0 +1,27 @@
+ Program
+   Robot Program
+     tile_pos_id≔11
+     num_rotations≔1
+     rotated≔0
+     ter_hover_pos≔p[0,0,0,0,0,0]
+     ter_lower_pos≔p[0,0,0,0,0,0]
+     ter_hov_rotated≔p[0,0,0,0,0,0]
+     ter_hov_move≔p[0,0,0,0,0,0]
+     ter_low_rotated≔p[0,0,0,0,0,0]
+     Script: rot_ter_offset.script
+     Loop rotated < num_rotations
+       MoveL
+         ter_hover_pos
+       Gripper Move75% (1)
+       MoveL
+         ter_lower_pos
+       Gripper Close (1)
+       MoveL
+         ter_hover_pos
+         ter_hov_rotated
+         ter_hov_move
+         ter_low_rotated
+       Gripper Move75% (1)
+       MoveL
+         ter_hov_move
+       rotated≔rotated + 1
