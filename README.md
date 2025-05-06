@@ -163,7 +163,7 @@ For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi
 
 Here is a "short" demo of Grid Master in action, showing player interaction, event handling, and grid expansion:
 
-🔗 [Watch on YouTube](https://youtu.be/abc123XYZ)
+🔗 [Watch on YouTube](https://youtu.be/abc123XYZ) - Working on it, it's a bit long.
 
 ## Credits
 
