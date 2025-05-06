@@ -12,7 +12,7 @@ By creating a process-oriented software architecture, I explored how human inter
 
 The system imagines the UR5 robot arm as the Game Master in a structured, rule-driven environment. By doing so, it demonstrates how a non-human entity can support gameplay that is heavily dependent on human participation by integrating a physical matrix interface, programmable robotic behavior, and process automation through CPEE.
 
-In addition, it demonstrates how rapid human feedback may be coordinated with adaptive robotic movements, highlighting essential concepts in sustainable automation, digital twins, and human-computer collaboration.
+In addition, it demonstrates how rapid human feedback may be coordinated, highlighting essential concepts in sustainable automation, digital twins, and human-computer collaboration.
 
 ## System Overview
 
