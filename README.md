@@ -23,7 +23,7 @@ The project integrates multiple components:
 * **Orange Pi Zero 2W** — Handles real-time key press detection via GPIO and sends movement data to the backend.
 * **CPEE** — Cloud Process Execution Engine serves as the central game logic controller, managing game setup, player turns, assigning events, detecting end-game conditions, and calling robot actions.
 * **Server** — Hosts the Bottle server (server.py) and manages game state communication between the CPEE, the Orange Pi, and the Visualizer.
-* **Frontend Visualizer** — A web interface displays the grid, handles player setup, and event interaction.
+* **Frontend Visualizer** — A web interface displays the grid and handles player setup and event interaction.
 
 ## Repository Structure
 
@@ -39,9 +39,9 @@ grid-master/
 │   ├── diagrams/
 │   ├── screenshots/
 │   └── stl/
-├── requirements.txt    # Combined Python dependencies
-├── .gitignore          # Clean repo management
-├── README.md           # This write-up
+├── requirements.txt    # Python dependencies
+├── .gitignore 
+├── README.md 
 ```
 
 ## Technologies Used
@@ -55,56 +55,54 @@ grid-master/
 | Frontend         | HTML, JS, CSS                       |
 | Communication    | HTTP, JSON                          |
 
-## How It Works
-
-1. CPEE sends a welcome message and character setup prompt to the frontend.
-2. Players step on character symbols on the 12x12 grid. Orange Pi detects movement and sends it to the server.
-3. Once all players are placed and initiative is set, CPEE enters a loop to manage initiative-based turns.
-4. For each player turn:
-
-   * CPEE assigns a random event
-   * Sends the current player and event data to the frontend
-   * Waits for updated player + grid state based on movement data and dice checks
-5. If the updated state indicates a new terrain piece is needed, CPEE triggers UR5 rotation and placement routines.
-6. The turn loop continues until the game end conditions are met, which for now are that all players have found and reached their escape locations.
-
 ## Game Design Summary
 
 * Players choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
-* Each character has unique stats (HP, armor, movement, stats).
-* Physical input drives a digital turn-based game loop.
-* Dynamic terrain placement via UR5 ensures modular gameplay.
-* Game logic includes physical dice rolls, stat-based checks, event outcomes, and real-time feedback.
-* Entire turn logic, event distribution, and robot coordination is handled by **CPEE**.
+* Each character has unique stats such as Health, Armor, Movement Speed, and Ability Stats.
+* Once the players are selected, the game turns start.
+* Entire turn logic, event distribution, and robot coordination are handled by **CPEE**.
+  * Physical movement input from the players drives the turn-based game loop.
+  * Events might appear on a randomized probability at the top of a player's turn.
+  * Game logic includes physical dice rolls, stat-based checks, event outcomes, and real-time feedback.
+* Depending if terrain expansion is necessary, the CPEE instructs the UR5 to place new terrain to ensure continuous gameplay.
+
+## How It Works
+
+1. CPEE sets up the initial terrain piece, and game state.
+2. A welcome message is displayed and players are prompted to choose their characters on the frontend.
+3. Players place their minis on character symbols on the 12x12 grid. The Orange Pi detects the key press and sends it to the server which forwards it to CPEE.
+4. Once all players are placed and initiative is set, CPEE enters a loop to manage initiative-based turns.
+5. For each player turn:
+  * CPEE:
+    * Assigns a random event decided by a random probability.
+    * Sends the current player, event data, and up-to-date game state to the frontend.
+  * The Frontend:
+    * Displays the current grid state.
+    * Displays the CPEE-determined event and waits for a roll input.
+    * Waits for the player to move.
+6. Once the player movement is finalized, the server posts the updated player position, grid state, and event outcome to CPEE.
+7. If the updated game state indicates a new terrain piece is needed, CPEE triggers UR5 rotation and placement routines.
+8. If the updated game state indicates a certain terrain piece rotation is necessary, CPEE triggers UR5 to rotate the piece on the grid.
+9. The turn loop continues until the game end conditions are met, which for now are that all players have found and reached their escape locations.
 
 ## Setup Instructions
 
-### Lehre Server Setup
+### Grid Matrix Setup
 
-* Install dependency:
-
-  ```bash
-  pip install bottle
-  ```
-
-* Run `src/server.py`
-* Host `frontend/index.html`
+Depending on the size of the grid, in this case 12x12, insert keyboard switches to each cell. The switches are then connected in rows and columns such that 12 continuous rows and 12 continuous columns are created. At the ends of each row and column, connect Dupont wires such that one end is stripped and soldered directly to the switches on the matrix, and the female ends can plug onto the GPIO header pins on the Orange Pi.
 
 ### Orange Pi Setup
 
 This project sets up an **Orange Pi Zero 2W** running **Armbian** to automatically:
 
-* Use **WiringOP** for accessing GPIO pins via terminal
-* Connect to **Wi-Fi** on boot
-* Enable **auto-login** to terminal
-* Run a **GPIO key press detection script** (`detect_key_presses.py`)
-
 #### 1. Flash Armbian Image
 
-* Download from [armbian.com](https://www.armbian.com/orange-pi-zero-2/)
-* Flash with Raspberry Pi Imager or Balena Etcher
+* For this project, an [armbian.com](https://www.armbian.com/orange-pi-zero-2/) image was found to be the most suitable.
+* I flashed the SD using Balena Etcher.
 
 #### 2. Install WiringOP
+
+Once the system was booted up, I installed WiringOP to have access to the GPIO pins.
 
 ```bash
 git clone https://github.com/zhaolei/WiringOP.git -b h3
@@ -113,49 +111,25 @@ chmod +x ./build
 sudo ./build
 ```
 
-#### 3. Connect to Wi-Fi Automatically
+#### 3. Automating Orange Pi
 
-Edit WPA config:
+For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi using a WPA configuration, automatically logs in to the user terminal through an autologin directive, and automatically starts running the key press detection script (`detect_key_presses.py`) by enabling a .service .
 
-```bash
-sudo nano /etc/wpa_supplicant/wifi.conf
-```
+### Lehre Server Setup
 
-Configure `wifi.service` and enable it.
-
-#### 4. Enable Auto-Login:
-
-```bash
-sudo systemctl edit getty@tty1
-```
-
-Add autologin directive.
-
-#### 5. Auto-Run Script on Boot:
-
-Create `detect-keys.service`:
-
-```bash
-sudo nano /etc/systemd/system/detect-keys.service
-```
-
-Set it to run `/home/your_username/detect_key_presses.py` with log output. Enable the service:
-
-```bash
-sudo systemctl enable detect-keys.service
-```
-
-The Orange Pi will now auto-login, auto-connect to wifi and run the grid input script on boot.
+* Install dependency:
+* Run `src/server.py`
+* Host `frontend/index.html`
 
 ### UR5 Robot Setup
 
-* Load programs via USB stick (rotate, pick, place).
+* Create or load programs (rotate, pick, place).
 * Set robot to Remote Control mode.
 * Robot responds to CPEE calls triggered from backend.
 
 ## Demo Video
 
-Watch a short demo of Grid Master in action, showing terrain placement, player interaction, and robot control:
+Here is a "short" demo of Grid Master in action, showing player interaction, event handling, and grid expansion:
 
 🔗 [Watch on YouTube](https://youtu.be/abc123XYZ)
 
