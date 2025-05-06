@@ -160,9 +160,9 @@ Robot control timing was smooth, though UR5 file access required manual workarou
 ## Future Directions
 
 * Add new game logic:
- * Enemy initiative, movement, and action logic to allow players to overcome obstacles during the gameplay.
- * Specialized player actions that can be used on turns such as Attack, or Heal.
- * Experience points to allow player leveling up which would unlock new abilities.
+ ** Enemy initiative, movement, and action logic to allow players to overcome obstacles during the gameplay.
+ ** Specialized player actions that can be used on turns such as Attack, or Heal.
+ ** Experience points to allow player leveling up which would unlock new abilities.
 * Add new game rulesets such that the game can be played with different objectives.  
 * Integrate visual/audio effects on the frontend during turn phases to improve game immersion.
 * Integrate speech recognition to allow players to interact with the system as they would in a real-life scenario.
