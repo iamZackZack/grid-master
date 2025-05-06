@@ -29,17 +29,17 @@ The project integrates multiple components:
 
 ```
 grid-master/
-├── src/                # Python scripts (server + Orange Pi GPIO)
-│   ├── server.py       # Backend server for forwarding and API handling
-│   └── detect_key_presses.py  # Orange Pi GPIO matrix detection
-├── frontend/           # index.html, scripts.js, styles.css
-├── data/               # JSON game data (grid, players, events)
-├── cpee/               # CPEE XML/SVG workflows (game logic)
-├── hardware/           # STL files, wiring diagrams, screenshots
+├── src/                            # Python scripts (server + Orange Pi GPIO)
+│   ├── server.py                   # Backend server for forwarding and API handling
+│   └── detect_key_presses.py       # Orange Pi GPIO matrix detection
+├── frontend/                       # index.html, scripts.js, styles.css
+├── data/                           # JSON game data (grid, players, events)
+├── cpee/                           # CPEE XML/SVG workflows (game logic)
+├── hardware/                       # STL files, wiring diagrams, screenshots
 │   ├── diagrams/
 │   ├── screenshots/
 │   └── stl/
-├── requirements.txt    # Python dependencies
+├── requirements.txt
 ├── .gitignore 
 ├── README.md 
 ```
