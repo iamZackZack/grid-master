@@ -127,6 +127,46 @@ For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi
 * Set robot to Remote Control mode.
 * Robot responds to CPEE calls.
 
+## Results
+
+* Successfully tested 6x6 and 12x12 keyboard matrices.
+
+Verified real-time GPIO input + JSON POST
+
+CPEE integration reliably handles game flow and robot triggers
+
+Frontend visualizer reacts live to game state and player turns
+
+Noted issues: USB recognition on UR5 was unreliable, resolved manually
+
+📊 Evaluation
+
+Terrain placement works consistently and aligns well with expected grid coordinates
+
+Movement detection via physical grid is accurate and responsive with <1s latency
+
+Event flow and character turn transitions operate reliably using CPEE logic
+
+Frontend provides clear visual feedback and worked in all tested browsers
+
+Robot control timing was smooth, though UR5 file access required manual workarounds
+
+## Immediate Improvements
+
+* Refine visuals on the frontend to improve game immersion.
+* Improve process latencies to make the game flow more smoothly.
+* Fine-tune the UR5 programs to allow proper placement of terrain pieces on, off, and across the grid.
+
+## Future Directions
+
+* Add new game logic:
+ * Enemy initiative, movement, and action logic to allow players to overcome obstacles during the gameplay.
+ * Specialized player actions that can be used on turns such as Attack, or Heal.
+ * Experience points to allow player leveling up which would unlock new abilities.
+* Add new game rulesets such that the game can be played with different objectives.  
+* Integrate visual/audio effects on the frontend during turn phases to improve game immersion.
+* Integrate speech recognition to allow players to interact with the system as they would in a real-life scenario.
+
 ## Demo Video
 
 Here is a "short" demo of Grid Master in action, showing player interaction, event handling, and grid expansion:
