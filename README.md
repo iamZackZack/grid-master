@@ -113,7 +113,7 @@ sudo ./build
 
 #### 3. Automating Orange Pi
 
-For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi using a WPA configuration, automatically logs in to the user terminal through an autologin directive, and automatically starts running the key press detection script (`detect_key_presses.py`) by enabling a .service .
+For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi using a WPA configuration, automatically logs in to the user terminal through an autologin directive, and automatically starts running the key press detection script (`detect_key_presses.py`) by enabling a service.
 
 ### Lehre Server Setup
 
