@@ -127,42 +127,29 @@ For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi
 * Set robot to Remote Control mode.
 * Robot responds to CPEE calls.
 
-## Results
+## Results & Evaluation
 
-* Successfully tested 6x6 and 12x12 keyboard matrices.
-
-Verified real-time GPIO input + JSON POST
-
-CPEE integration reliably handles game flow and robot triggers
-
-Frontend visualizer reacts live to game state and player turns
-
-Noted issues: USB recognition on UR5 was unreliable, resolved manually
-
-📊 Evaluation
-
-Terrain placement works consistently and aligns well with expected grid coordinates
-
-Movement detection via physical grid is accurate and responsive with <1s latency
-
-Event flow and character turn transitions operate reliably using CPEE logic
-
-Frontend provides clear visual feedback and worked in all tested browsers
-
-Robot control timing was smooth, though UR5 file access required manual workarounds
+* The 12x12 keyboard matrix accurately detects and posts key presses, however the response speed can be improved to decrease delay on detection and posting.
+* CPEE handles game flow and initiative order correctly and determines game continue conditions.
+* CPEE decides events for each turn and correctly updates player data based on information returned from the server.
+* CPEE determines if grid expansion is required, correctly determines the next terrain piece rotation and placement, and updates the game state accordingly.
+* CPEE determines if terrain rotation is required and updates the game state accordingly.
+* Frontend provides clear visual feedback and updates according to the current game state.
+* Frontend reacts to player input regarding dice rolls and movements.
+* Though the UR5 rotates and places terrain pieces, fine-tuning is required to allow for more accurate placement of tiles on the expected grid coordinates.
 
 ## Immediate Improvements
 
 * Refine visuals on the frontend to improve game immersion.
-* Improve process latencies to make the game flow more smoothly.
-* Fine-tune the UR5 programs to allow proper placement of terrain pieces on, off, and across the grid.
+* Improve key press detection and posting speed to decrease latency and make the game flow more smoothly.
+* Fine-tune the UR5 programs to allow proper placement of terrain pieces on, off, and across the grid, and fully integrate on CPEE.
 
 ## Future Directions
 
 * Add new game logic:
- ** Enemy initiative, movement, and action logic to allow players to overcome obstacles during the gameplay.
- ** Specialized player actions that can be used on turns such as Attack, or Heal.
- ** Experience points to allow player leveling up which would unlock new abilities.
+  * Enemy initiative, movement, and action logic to allow players to overcome obstacles during the gameplay.
+  * Specialized player actions that can be used on turns such as Attack, or Heal.
+  * Experience points to allow player leveling up which would unlock new abilities.
 * Add new game rulesets such that the game can be played with different objectives.  
 * Integrate visual/audio effects on the frontend during turn phases to improve game immersion.
 * Integrate speech recognition to allow players to interact with the system as they would in a real-life scenario.
