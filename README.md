@@ -4,13 +4,13 @@
 
 ## Abstract
 
-Grid Master is a hybrid physical-digital game system where a UR5 robotic arm acts as the Game Master for a Tabletop Role-Playing Game. In this dungeon crawl, up to four players interact with a 12x12 modular terrain grid that expands according to their interactions with the game environment via physical button presses tracked by a custom Orange Pi setup and engage in a roleplay-inspired narrative managed through real-time game logic executed via CPEE. The system creates an immersive TTRPG experience by combining BPMN-style process automation with robotics and embedded computing.
+Grid Master is a hybrid physical-digital game system where a UR5 co-bot arm acts as the Game Master for a Tabletop Role-Playing Game. In this dungeon crawl, up to four players interact with a 12x12 modular terrain grid that expands according to their interactions with the game environment via physical button presses tracked by a custom Orange Pi setup and engage in a roleplay-inspired narrative managed through real-time game logic executed via CPEE. The system creates an immersive TTRPG experience by combining BPMN-style process automation with robotics and embedded computing.
 
 ## Motivation
 
 By creating a process-oriented software architecture, I explored how human interaction, robotics, and automation may be integrated. The system demonstrates how complex decision-making and sequential gameplay logic, modeled after tabletop role-playing games such as Dungeons & Dragons, may be modeled, visualized, and implemented using a cloud-based process engine.
 
-The system imagines the UR5 robot arm as the Game Master in a structured, rule-driven environment. By doing so, it demonstrates how a non-human entity can support gameplay that is heavily dependent on human participation by integrating a physical matrix interface, programmable robotic behavior, and process automation through CPEE.
+The system imagines the UR5 co-bot arm as the Game Master in a structured, rule-driven environment. By doing so, it demonstrates how a non-human entity can support gameplay that is heavily dependent on human participation by integrating a physical matrix interface, programmable robotic behavior, and process automation through CPEE.
 
 In addition, it demonstrates how rapid human feedback may be coordinated, highlighting essential concepts in sustainable automation, digital twins, and human-computer interaction.
 
@@ -18,10 +18,10 @@ In addition, it demonstrates how rapid human feedback may be coordinated, highli
 
 The project integrates multiple components:
 
-* **UR5 Robotic Arm** — Acts as the Game Master, physically placing and rotating terrain pieces and expanding the player grid based on player movement.
+* **UR5 Co-bot Arm** — Acts as the Game Master, physically placing and rotating terrain pieces and expanding the player grid based on player movement.
 * **12x12 Grid** — Physical surface embedded with 144 mechanical keyboard switches for position detection.
 * **Orange Pi Zero 2W** — Handles real-time key press detection via GPIO and sends movement data to the backend.
-* **CPEE** — Cloud Process Execution Engine serves as the central game logic controller, managing game setup, player turns, assigning events, detecting end-game conditions, and calling robot actions.
+* **CPEE** — Cloud Process Execution Engine serves as the central game logic controller, managing game setup, player turns, assigning events, detecting end-game conditions, and calling co-bot actions.
 * **Server** — Hosts the Bottle server (server.py) and manages game state communication between the CPEE, the Orange Pi, and the Visualizer.
 * **Frontend Visualizer** — A web interface displays the grid and handles player setup and event interaction.
 
@@ -48,10 +48,10 @@ grid-master/
 
 | Component        | Stack                               |
 | ---------------- | ----------------------------------- |
-| Embedded Input   | Orange Pi Zero 2W + WiringOP        |
+| Physical Input   | Orange Pi Zero 2W + WiringOP        |
 | Backend Server   | Python + Bottle                     |
 | Process Engine   | CPEE (XML workflows)                |
-| Robot Controller | UR5 Robot Arm                       |
+| Robot Helper     | UR5 Co-bot Arm                      |
 | Frontend         | HTML, JS, CSS                       |
 | Communication    | HTTP, JSON                          |
 
@@ -126,11 +126,11 @@ For ease of use, I also made it so the Orange Pi automatically connects to Wi-Fi
 * Run `src/server.py`
 * Host `frontend/index.html`
 
-### UR5 Robot Setup
+### UR5 Co-bot Setup
 
 * Create or load programs (rotate, pick, place).
-* Set robot to Remote Control mode.
-* Robot responds to CPEE calls.
+* Set co-bot to Remote Control mode.
+* The co-bot responds to CPEE calls.
 
 ## Results & Evaluation
 
