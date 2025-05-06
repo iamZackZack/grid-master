@@ -59,31 +59,36 @@ grid-master/
 
 * Players choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
 * Each character has unique stats such as Health, Armor, Movement Speed, and Ability Stats.
-* Once the players are selected, the game turns start.
-* Entire turn logic, event distribution, and robot coordination are handled by **CPEE**.
-  * Physical movement input from the players drives the turn-based game loop.
-  * Events might appear on a randomized probability at the top of a player's turn.
-  * Game logic includes physical dice rolls, stat-based checks, event outcomes, and real-time feedback.
-* Depending if terrain expansion is necessary, the CPEE instructs the UR5 to place new terrain to ensure continuous gameplay.
+* Once the players are selected, the game starts.
+* On a player's turn:
+  * An event, randomly determined by CPEE, is displayed on the user interface, such as a Flame Trap, or a Ghost Attack.
+  * If a die roll(ie. a Saving Throw) is required, the player is asked to roll their die and add their ability modifier to the check, and input their roll.
+  * Depending on the outcome(success or failure), the player suffers the effects of the event(ie. a decrease in Health).
+  * Then the player moves their mini to the position they want to move(They are only allowed to move a number of cells equal to their character's speed).
+* Once the player movement is finalized, one of the following may occur:
+  * If the player does not reach the end of a terrain piece, the next player in the initiative order continues with their turn.
+  * If the player reaches an exit on a terrain piece and the piece IS on the edge of a grid, that terrain piece is rotated on the grid so the player can continue exploring a different arrangement of the environment.
+  * If the player reaches an exit on a terrain piece and the piece IS NOT the edge of a grid, a new terrain piece is inserted onto the grid so the players can continue exploring the environment.
 
 ## How It Works
 
-1. CPEE sets up the initial terrain piece, and game state.
-2. A welcome message is displayed and players are prompted to choose their characters on the frontend.
-3. Players place their minis on character symbols on the 12x12 grid. The Orange Pi detects the key press and sends it to the server which forwards it to CPEE.
-4. Once all players are placed and initiative is set, CPEE enters a loop to manage initiative-based turns.
+1. CPEE sets up the initial terrain piece by randomly assigning a rotation(transposes the matrix), placing it on the grid, and updating the game state(which cells in the 12x12 hold which terrain piece, ie. terrain A or terrain E).
+2. A welcome message is displayed on the user interface and players are prompted to choose their characters.
+3. To do so, the players place their minis on character symbols on the 12x12 grid. The Orange Pi detects the key press and sends it to the server which forwards it to CPEE.
+4. Once all players are placed and the initiative is set, CPEE enters a loop to manage initiative-based turns.
 5. For each player turn:
   * CPEE:
-    * Assigns a random event decided by a random probability.
-    * Sends the current player, event data, and up-to-date game state to the frontend.
-  * The Frontend:
+    * Determines a random event from the seven available events, decided by a random probability.
+    * Sends the current player, event data, and up-to-date game state to the user interface and asynchronously waits for new player data.
+  * The user interface:
     * Displays the current grid state.
     * Displays the CPEE-determined event and waits for a roll input.
     * Waits for the player to move.
-6. Once the player movement is finalized, the server posts the updated player position, grid state, and event outcome to CPEE.
-7. If the updated game state indicates a new terrain piece is needed, CPEE triggers UR5 rotation and placement routines.
-8. If the updated game state indicates a certain terrain piece rotation is necessary, CPEE triggers UR5 to rotate the piece on the grid.
-9. The turn loop continues until the game end conditions are met, which for now are that all players have found and reached their escape locations.
+6. Once the event and the player movement are finalized, the server posts the updated player position, grid state, and event outcome to CPEE.
+7. CPEE continues the process flow.
+8. If the updated game state indicates a new terrain piece is needed, CPEE determines a random terrain piece and rotation, updates the game state with the new terrain piece, and instructs the UR5 to rotate and place that terrain piece on the grid.
+9. If the updated game state indicates a certain terrain piece rotation is necessary, CPEE transposes the new rotation, updates the game state with the updated terrain piece, and triggers the UR5 to rotate the terrain piece on the grid.
+10. The turn loop continues until the game end conditions are met, which for now is that all players have reached their escape locations.
 
 ## Setup Instructions
 
