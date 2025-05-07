@@ -14,6 +14,24 @@ The system imagines the UR5 co-bot arm as the Game Master in a structured, rule-
 
 In addition, it demonstrates how rapid human feedback may be coordinated, highlighting essential concepts in sustainable automation, digital twins, and human-computer interaction.
 
+## Game Design Summary
+
+* Players can choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
+* Each character has unique stats such as Health, Armor, Movement Speed, and Ability Stats(Strength, Agility, Finesse, Knowledge, Insight, Charisma).
+* Once the players are selected, the game starts. The players aim to find their individual and character-specific exit points in the dungeon that expands with further terrain tiles as they explore the environment.
+* On a player's turn:
+  * The player has an event that occurs to them which may allow them to:
+     1. Continue their turn normally.
+     2. Prompt them to make a certain saving throw depending on the event, such as a Flame Trap, or a Ghost Attack, for which they may lose health depending on if they succeed or fail the check, or,
+     3. Get healed, such as by "finding a Healing Potion".
+  * The player can then move their mini to the position they want to move(They are only allowed to move a number of cells equal to their character's speed).
+* If at any point a player drops to 0 health, they die and are removed from the initiative order. The remaining players need to explore the remainder of the environment and find their exit points before they are all spent.
+* Once the player movement is finalized, one of the following may occur:
+  * If the player does not reach the end of a terrain piece, the next player in the initiative order continues with their turn.
+  * If the player reaches an exit on a terrain piece and the piece IS on the edge of a grid, that terrain piece is rotated on the grid so the player can continue exploring a different arrangement of the environment.
+  * If the player reaches an exit on a terrain piece and the piece IS NOT the edge of a grid, a new terrain piece is inserted onto the grid so the players can continue exploring the environment.
+* The game ends when all players are standing at their exit positions - the symbols their players are related to(ie. Triangle for Rogue, Pentagon for Cleric etc.). The game also ends if all players are reduced to 0 health and removed from the initiative order.
+
 ## System Overview
 
 The project integrates multiple components:
@@ -54,24 +72,6 @@ grid-master/
 | Robot Helper     | UR5 Co-bot Arm                      |
 | Frontend         | HTML, JS, CSS                       |
 | Communication    | HTTP, JSON                          |
-
-## Game Design Summary
-
-* Players can choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
-* Each character has unique stats such as Health, Armor, Movement Speed, and Ability Stats(Strength, Agility, Finesse, Knowledge, Insight, Charisma).
-* Once the players are selected, the game starts.
-* On a player's turn:
-  * The player has an event that occurs to them which may allow them to:
-     1. Continue their turn normally.
-     2. Prompt them to make a certain saving throw depending on the event, such as a Flame Trap, or a Ghost Attack, for which they may lose health depending on if they succeed or fail the check, or,
-     3. Get healed, such as by "finding a Healing Potion".
-  * The player can then move their mini to the position they want to move(They are only allowed to move a number of cells equal to their character's speed).
-* If at any point a player drops to 0 health, they die and are removed from the initiative order. The remaining players need to explore the remainder of the environment and find their exit points before they are all spent.
-* Once the player movement is finalized, one of the following may occur:
-  * If the player does not reach the end of a terrain piece, the next player in the initiative order continues with their turn.
-  * If the player reaches an exit on a terrain piece and the piece IS on the edge of a grid, that terrain piece is rotated on the grid so the player can continue exploring a different arrangement of the environment.
-  * If the player reaches an exit on a terrain piece and the piece IS NOT the edge of a grid, a new terrain piece is inserted onto the grid so the players can continue exploring the environment.
-* The game ends when all players are standing at their exit positions - the symbols their players are related to(ie. Triangle for Rogue, Pentagon for Cleric etc.). The game also ends if all players are reduced to 0 health and removed from the initiative order.
 
 ## How It Works
 
