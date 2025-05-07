@@ -4,11 +4,11 @@
 
 ## Abstract
 
-Grid Master is a hybrid physical-digital game system where a UR5 co-bot arm acts as the Game Master for a Tabletop Role-Playing Game. In this dungeon crawl, up to four players interact with a 12x12 modular terrain grid that expands according to their interactions with the game environment via physical button presses tracked by a custom Orange Pi setup and engage in a roleplay-inspired narrative managed through real-time game logic executed via CPEE. The system creates an immersive TTRPG experience by combining BPMN-style process automation with robotics and embedded computing.
+Grid Master is a hybrid physical-digital game system where a UR5 co-bot arm acts as the Game Master for a custom Tabletop Role-Playing Game. In this dungeon crawl, up to four players interact with a 12x12 modular grid with terrain on top which expands according to their interactions with the game environment via physical button presses tracked by a custom Orange Pi setup and engage in a roleplay-inspired narrative managed through real-time game logic executed via CPEE. The system creates an immersive TTRPG experience by combining BPMN-style process automation with robotics and embedded computing.
 
 ## Motivation
 
-By creating a process-oriented software architecture, I explored how human interaction, robotics, and automation may be integrated. The system demonstrates how complex decision-making and sequential gameplay logic, modeled after tabletop role-playing games such as Dungeons & Dragons, may be modeled, visualized, and implemented using a cloud-based process engine.
+By creating a process-oriented software architecture, the project explores how human interaction, robotics, and automation may be integrated. The system demonstrates how complex decision-making and sequential gameplay logic, modeled after tabletop role-playing games such as Dungeons & Dragons, may be modeled, visualized, and implemented using a cloud-based process engine.
 
 The system imagines the UR5 co-bot arm as the Game Master in a structured, rule-driven environment. By doing so, it demonstrates how a non-human entity can support gameplay that is heavily dependent on human participation by integrating a physical matrix interface, programmable robotic behavior, and process automation through CPEE.
 
@@ -21,7 +21,7 @@ The project integrates multiple components:
 * **UR5 Co-bot Arm** — Acts as the Game Master, physically placing and rotating terrain pieces and expanding the player grid based on player movement.
 * **12x12 Grid** — Physical surface embedded with 144 mechanical keyboard switches for position detection.
 * **Orange Pi Zero 2W** — Handles real-time key press detection via GPIO and sends movement data to the backend.
-* **CPEE** — Cloud Process Execution Engine serves as the central game logic controller, managing game setup, player turns, assigning events, detecting end-game conditions, and calling co-bot actions.
+* **CPEE** — Cloud Process Execution Engine serves as the central game logic controller, managing game setup, turn progression, and player data, detecting end-game conditions, and calling co-bot actions.
 * **Server** — Hosts the Bottle server (server.py) and manages game state communication between the CPEE, the Orange Pi, and the Visualizer.
 * **Frontend Visualizer** — A web interface displays the grid and handles player setup and event interaction.
 
@@ -57,18 +57,21 @@ grid-master/
 
 ## Game Design Summary
 
-* Players choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
-* Each character has unique stats such as Health, Armor, Movement Speed, and Ability Stats.
+* Players can choose from 4 characters: **Rogue, Wizard, Cleric, or Barbarian**.
+* Each character has unique stats such as Health, Armor, Movement Speed, and Ability Stats(Strength, Agility, Finesse, Knowledge, Insight, Charisma).
 * Once the players are selected, the game starts.
 * On a player's turn:
-  * An event, randomly determined by CPEE, is displayed on the user interface, such as a Flame Trap, or a Ghost Attack.
-  * If a die roll(ie. a Saving Throw) is required, the player is asked to roll their die and add their ability modifier to the check, and input their roll.
-  * Depending on the outcome(success or failure), the player suffers the effects of the event(ie. a decrease in Health).
-  * Then the player moves their mini to the position they want to move(They are only allowed to move a number of cells equal to their character's speed).
+  * The player has an event that occurs to them which may allow them to:
+     1. Continue their turn normally.
+     2. Prompt them to make a certain saving throw depending on the event, such as a Flame Trap, or a Ghost Attack, for which they may lose health depending on if they succeed or fail the check, or,
+     3. Get healed, such as by "finding a Healing Potion".
+  * The player can then move their mini to the position they want to move(They are only allowed to move a number of cells equal to their character's speed).
+* If at any point a player drops to 0 health, they die and are removed from the initiative order. The remaining players need to explore the remainder of the environment and find their exit points before they are all spent.
 * Once the player movement is finalized, one of the following may occur:
   * If the player does not reach the end of a terrain piece, the next player in the initiative order continues with their turn.
   * If the player reaches an exit on a terrain piece and the piece IS on the edge of a grid, that terrain piece is rotated on the grid so the player can continue exploring a different arrangement of the environment.
   * If the player reaches an exit on a terrain piece and the piece IS NOT the edge of a grid, a new terrain piece is inserted onto the grid so the players can continue exploring the environment.
+* The game ends when all players are standing at their exit positions - the symbols their players are related to(ie. Triangle for Rogue, Pentagon for Cleric etc.). The game also ends if all players are reduced to 0 health and removed from the initiative order.
 
 ## How It Works
 
