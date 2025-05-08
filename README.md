@@ -79,7 +79,7 @@ grid-master/
   * **player_data:** is an array of objects, each object representing a character with different key-value pairs that represent the traits of that character such as Health, Evasion, Speed, and Ability Scores.
   * **terrains:** is an array of objects, each object representing a 4x4 terrain piece with different key-value pairs that represent the structure of the terrain piece:
     * **id:** the ID of the terrain, to keep track of which terrain is being managed or manipulated.
-    * **home:** home position of the terrain piece in the terrain holder for ease of storage and to keep track of rotation, pick up, and drop off.
+    * **home:** home position of the terrain piece in the terrain storage and to keep track of rotation, pick up, and drop off.
     * **placement:** placement of the terrain piece on the grid, can be one of nine values, to keep track of of rotation, pick up, and drop off.
     * **rotation:** keeps track of the rotation of the terrain piece internally.
     * **cells:** is an array of four arrays, each array representing a row of the terrain piece, and each array contaning 4 objects, representing the columns. These objects contain the following key-value pairs:
