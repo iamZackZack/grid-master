@@ -137,7 +137,20 @@ grid-master/
     * If no expansion is required, CPEE continues the turn loop from step 5.
 8. The turn loop continues until the game end conditions are met, which for now is that all players are standing in cells on the grid which have the end effect specific to their characters OR that all players have been slain and removed from the initiative order.
 
-**Note:** The CPEE currently has two pathways in rotating and placing the terrain pieces: with a co-bot and without. Once the co-bot programs are completed, the non-ur5 pathways will be removed.
+**Note #1:** The CPEE currently has two pathways in rotating and placing the terrain pieces: with a co-bot and without. Once the co-bot programs are completed, the non-ur5 pathways will be removed.
+**Note #2:** Removal of edge terrain pieces was omitted for phase 1 of the project, but will be added in future phases.
+**Note #3:** Rotation of terrain pieces to their true north when being removed from the grid was omitted for phase 1 of the project, but will be added in future phases.
+
+## UR5 Co-bot Program Descriptions
+
+For the purposes of this project, the co-bot currently contains six programs. For the co-bot, the terrain storage and the grid are both divided into 3 rows and 3 columns. The terrain storage base coordinates and the grid base coordinates are set variables at the holder position of the terrain piece at the first row and first column position, so 11. Each program calculates the offset of a wanted terrain piece from the base position.
+
+1. **move_to_base:** Moves the co-bot to its home/base position.
+2. **move_on_grid:** Takes in a target home position(ie. 11, 12, 13, 21, 22, 23, 31, 32, or 33) and a target grid position(similarly 11, 12, 13, etc.), calculates the real coordinates of pick up and placement using the offset from the storage base coordinate and the grid base coordinate respectively, picks up the terrain piece from the target storage position, and places it on the target grid position.
+3. **move_off_grid:** Takes in a target grid position and a target storage position, calculates the real coordinates of pick up and placement using the offset from the grid base coordinate and the storage base coordinate, picks up the terrain piece from the target grid position, and places it on the target storage position.
+4. **move_grid_tile (not yet used in CPEE):** Takes in a starting grid position and an ending grid position, calculates the real coordinates of pick up and placement using the offset from the grid base coordinate, picks up the terrain piece from the target starting grid position, and places it to the target ending grid position.
+5. **rotate_90:** Takes in a target storage position and a rotation, calculates the pick-up coordinates, the rotation movement waypoints, and the placement coordinates using the offset from the storage base coordinate, picks up the terrain piece from the target storage position, rotates it once 90-degrees clockwise, and places it at the same target storage position. Loops a 1-3 times depending on the degree of rotation.
+6. **rotate_90_grid:** Takes in a target grid position and a rotation, calculates the pick-up coordinates, the rotation movement waypoints, and the placement coordinates using the offset from the grid base coordinate, picks up the terrain piece from the target grid position, rotates it once 90-degrees clockwise, and places it at the same target grid position.
 
 ## Setup Instructions
 
