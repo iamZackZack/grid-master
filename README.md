@@ -76,7 +76,7 @@ grid-master/
 ## How It Works
 
 1. CPEE contains the template data for the grid, terrains, players, and events and stores, manipulates, and resets them as the game progresses. The JSON files are as follows:
-  * **player_data:** is an array of objects, each object representing a character with different key-value pairs that represent the traits of that character such as Health, Evasion, Speed, and Ability Scores.
+  * **character_template:** is an array of objects, each object representing a character with different key-value pairs that represent the traits of that character such as Health, Evasion, Speed, and Ability Scores.
   * **terrains:** is an array of objects, each object representing a 4x4 terrain piece with different key-value pairs that represent the structure of the terrain piece:
     * **id:** the ID of the terrain, to keep track of which terrain is being managed or manipulated.
     * **home:** home position of the terrain piece in the terrain storage and to keep track of rotation, pick up, and drop off.
@@ -103,11 +103,16 @@ grid-master/
     * **occupied:** contains the id of the character currently occupying that cell, null otherwise.
     * **effect:** keeps track of the start or end condition for a specific character, null otherwise.
     * **exit:** keeps track if a cell in a terrain piece represents an exit out of that terrain piece or not.
-2. 
-3. CPEE sets up the initial terrain piece by randomly assigning a rotation(transposes the matrix), placing it on the grid, and updating the game state(which cells in the 12x12 hold which terrain piece, ie. terrain A or terrain E).
-4. A welcome message is displayed on the user interface and players are prompted to choose their characters.
-5. To do so, the players place their minis on character symbols on the 12x12 grid. The Orange Pi detects the key press and sends it to the server which forwards it to CPEE.
-6. Once all players are placed and the initiative is set, CPEE enters a loop to manage initiative-based turns.
+2. CPEE sets up the initial terrain piece by randomly assigning a rotation(transposes the matrix), placing it on the center of the grid, and updating the game_state data element, which uses the grid template and updates the cells in the mosaic to represent which terrain pieces they hold, ie. terrain A or terrain E, and if they have any effects or exits. The transposing of the matrix means that both the cells themselves are rotated clockwise in either 0, 90, 180, or 270 degrees, as well as the horizontal wall and vertical wall arrays.
+  * In the case that a UR5 co-bot is being used:
+    * The CPEE first checks if a random rotation other than 0 was chosen for the given terrain piece. If so, it first sets the input values for the co-bot API with two separate service calls, one for the home placement of the terrain piece and the other for the rotation determined. Then it makes the service call to the ur5 co-bot API, which uses those input values, to rotate the given terrain pieces a number of times, clockwise and 90 degrees. If the rotation is 0, this step is skipped.
+    * Once the rotation of the terrain piece is handled, the CPEE once again sets the input values for the co-bot API with two separate service calls, one for the home placement of the terrain piece, and the other for the grid placement of the terrain piece. Then it makes the service call to the ur5 co-bot API, which uses those input values, to pick up the given terrain piece from its home position and place it to its target position on the grid.
+  * In the case that a UR5 co-bot is NOT being used:
+    * The CPEE first checks if a random rotation other than 0 was chosen for the given terrain. If so, it makes a service call to the server which simply informs the players via printing to rotate a certain terrain piece with an id on a certain home placement to be rotated a certain number of times clockwise and 90 degrees.
+    * Once the rotation of the terrain piece is handled, the CPEE then makes another service call to the server which simply informs the players via printing to place a certain terrain piece at a home position to a target position on the grid.
+3. Once the initial terrain piece is placed, CPEE initiates a welcome message to be displayed on the user interface where the players are then prompted to choose their characters. To do so, the players place their minis on cells holding their character symbols on the terrain piece which is placed on the mosaic. The Orange Pi detects the key press and sends it to the server which keeps track of the players selected without sending the data back to CPEE.
+4. The server then prompts the players who selected their characters to roll for initiative and input their rolls into the user interface. Once all players enter their initiatives, and the players are ordered in decreasing initiative, the server sends the data back to CPEE, which updates the player_data with the initiative order and enters a loop to manage the initiative-based turns.
+5. 
 7. For each player turn:
   * CPEE:
     * Determines a random event from the seven available events, decided by a random probability.
