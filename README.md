@@ -76,40 +76,40 @@ grid-master/
 ## How It Works
 
 1. CPEE contains the template data for the grid, terrains, players, and events and stores, manipulates, and resets them as the game progresses. The JSON files are as follows:
-  * **character_template:** is an array of objects, each object representing a character with different key-value pairs that represent the traits of that character such as Health, Evasion, Speed, and Ability Scores.
-  * **terrains:** is an array of objects, each object representing a 4x4 terrain piece with different key-value pairs that represent the structure of the terrain piece:
-    * **id:** the ID of the terrain, to keep track of which terrain is being managed or manipulated.
-    * **home:** home position of the terrain piece in the terrain storage and to keep track of rotation, pick up, and drop off.
-    * **placement:** placement of the terrain piece on the grid, can be one of nine values, to keep track of of rotation, pick up, and drop off.
-    * **rotation:** keeps track of the rotation of the terrain piece internally.
-    * **cells:** is an array of four arrays, each array representing a row of the terrain piece, and each array contaning 4 objects, representing the columns. These objects contain the following key-value pairs:
-      * **effect:** keeps track if the cell is an entrace or exit of a certain character.
-      * **occupied:** keeps track if the cell is occupied by a player or not.
-      * **exit:** keeps track if the cell leads to an exit out of the terrain or not.
-    * **horizontal_walls:** is an array of four arrays, each array representing one of the four rows of the terrain, and the five values in each of these arrays are either set to 0, for no wall, or 1 for a wall.
-    * **vertical_walls:** is an array of four arrays, each array representing one of the four columns of the terrain, and the five values in each of these arrays are either set to 0, for no wall, or 1 for a wall.
-  * **events:** is an array of objects, each object representing one of the seven events that may occur at the top of a player's turn. The different key-value pairs of each object represent the structure and function of the individual event:
-    * **id:** the ID of the event, to keep track of which event is being used for a given player's turn.
-    * **name:** the title of the event
-    * **description:** flavor text for the description of the event. Tells the player what happens and if a roll is necessary or not.
-    * **dc:** the difficulty rating of the event which the die roll has to match or beat meaning a success, or a failure otherwise.
-    * **dice:** the number and type of dice required for the damage or hea roll, if present, for the event.
-    * **effect:** the effect of the event, such as damage or heal.
-    * **on_success:** the effect of the event if the roll was a success.
-    * **on_fail:** the effect of the event if the roll was a failure.
-  * **grid/mosaic:** is an array of twelve arrays, each array representing a row, where each row array contains 12 objects, each object representing the column in the row. The key-value pairs of these objects are as follows:
-    * **global:** an array of two values that keeps track of the row and column number of the cell itself globally.
-    * **terrainID:** contains the id of the terrain piece currently placed on that cell, null otherwise.
-    * **occupied:** contains the id of the character currently occupying that cell, null otherwise.
-    * **effect:** keeps track of the start or end condition for a specific character, null otherwise.
-    * **exit:** keeps track if a cell in a terrain piece represents an exit out of that terrain piece or not.
+    * **character_template:** is an array of objects, each object representing a character with different key-value pairs that represent the traits of that character such as Health, Evasion, Speed, and Ability Scores.
+    * **terrains:** is an array of objects, each object representing a 4x4 terrain piece with different key-value pairs that represent the structure of the terrain piece:
+      * **id:** the ID of the terrain, to keep track of which terrain is being managed or manipulated.
+      * **home:** home position of the terrain piece in the terrain storage and to keep track of rotation, pick up, and drop off.
+      * **placement:** placement of the terrain piece on the grid, can be one of nine values, to keep track of of rotation, pick up, and drop off.
+      * **rotation:** keeps track of the rotation of the terrain piece internally.
+      * **cells:** is an array of four arrays, each array representing a row of the terrain piece, and each array contaning 4 objects, representing the columns. These objects contain the following key-value pairs:
+        * **effect:** keeps track if the cell is an entrace or exit of a certain character.
+        * **occupied:** keeps track if the cell is occupied by a player or not.
+        * **exit:** keeps track if the cell leads to an exit out of the terrain or not.
+      * **horizontal_walls:** is an array of four arrays, each array representing one of the four rows of the terrain, and the five values in each of these arrays are either set to 0, for no wall, or 1 for a wall.
+      * **vertical_walls:** is an array of four arrays, each array representing one of the four columns of the terrain, and the five values in each of these arrays are either set to 0, for no wall, or 1 for a wall.
+    * **events:** is an array of objects, each object representing one of the seven events that may occur at the top of a player's turn. The different key-value pairs of each object represent the structure and function of the individual event:
+      * **id:** the ID of the event, to keep track of which event is being used for a given player's turn.
+      * **name:** the title of the event
+      * **description:** flavor text for the description of the event. Tells the player what happens and if a roll is necessary or not.
+      * **dc:** the difficulty rating of the event which the die roll has to match or beat meaning a success, or a failure otherwise.
+      * **dice:** the number and type of dice required for the damage or hea roll, if present, for the event.
+      * **effect:** the effect of the event, such as damage or heal.
+      * **on_success:** the effect of the event if the roll was a success.
+      * **on_fail:** the effect of the event if the roll was a failure.
+    * **grid/mosaic:** is an array of twelve arrays, each array representing a row, where each row array contains 12 objects, each object representing the column in the row. The key-value pairs of these objects are as follows:
+      * **global:** an array of two values that keeps track of the row and column number of the cell itself globally.
+      * **terrainID:** contains the id of the terrain piece currently placed on that cell, null otherwise.
+      * **occupied:** contains the id of the character currently occupying that cell, null otherwise.
+      * **effect:** keeps track of the start or end condition for a specific character, null otherwise.
+      * **exit:** keeps track if a cell in a terrain piece represents an exit out of that terrain piece or not.
 2. CPEE sets up the initial terrain piece by randomly assigning a rotation(transposes the matrix), placing it on the center of the grid, and updating the game_state data element, which uses the grid template and updates the cells in the mosaic to represent which terrain pieces they hold, ie. terrain A or terrain E, and if they have any effects or exits. The transposing of the matrix means that both the cells themselves are rotated clockwise in either 0, 90, 180, or 270 degrees, as well as the horizontal wall and vertical wall arrays.
-  * In the case that a UR5 co-bot is being used:
-    * The CPEE first checks if a random rotation other than 0 was chosen for the given terrain piece. If so, it first sets the input values for the co-bot API with two separate service calls, one for the home placement of the terrain piece and the other for the rotation determined. Then it makes the service call to the ur5 co-bot API, which uses those input values, to rotate the given terrain pieces a number of times, clockwise and 90 degrees. If the rotation is 0, this step is skipped.
-    * Once the rotation of the terrain piece is handled, the CPEE once again sets the input values for the co-bot API with two separate service calls, one for the home placement of the terrain piece, and the other for the grid placement of the terrain piece. Then it makes the service call to the ur5 co-bot API, which uses those input values, to pick up the given terrain piece from its home position and place it to its target position on the grid.
-  * In the case that a UR5 co-bot is NOT being used:
-    * The CPEE first checks if a random rotation other than 0 was chosen for the given terrain. If so, it makes a service call to the server which simply informs the players via printing to rotate a certain terrain piece with an id on a certain home placement to be rotated a certain number of times clockwise and 90 degrees.
-    * Once the rotation of the terrain piece is handled, the CPEE then makes another service call to the server which simply informs the players via printing to place a certain terrain piece at a home position to a target position on the grid.
+    * In the case that a UR5 co-bot is being used:
+      * The CPEE first checks if a random rotation other than 0 was chosen for the given terrain piece. If so, it first sets the input values for the co-bot API with two separate service calls, one for the home placement of the terrain piece and the other for the rotation determined. Then it makes the service call to the ur5 co-bot API, which uses those input values, to rotate the given terrain pieces a number of times, clockwise and 90 degrees. If the rotation is 0, this step is skipped.
+      * Once the rotation of the terrain piece is handled, the CPEE once again sets the input values for the co-bot API with two separate service calls, one for the home placement of the terrain piece, and the other for the grid placement of the terrain piece. Then it makes the service call to the ur5 co-bot API, which uses those input values, to pick up the given terrain piece from its home position and place it to its target position on the grid.
+    * In the case that a UR5 co-bot is NOT being used:
+      * The CPEE first checks if a random rotation other than 0 was chosen for the given terrain. If so, it makes a service call to the server which simply informs the players via printing to rotate a certain terrain piece with an id on a certain home placement to be rotated a certain number of times clockwise and 90 degrees.
+      * Once the rotation of the terrain piece is handled, the CPEE then makes another service call to the server which simply informs the players via printing to place a certain terrain piece at a home position to a target position on the grid.
 3. Once the initial terrain piece is placed, CPEE initiates a welcome message to be displayed on the user interface where the players are then prompted to choose their characters. To do so, the players place their minis on cells holding their character symbols on the terrain piece which is placed on the mosaic. The Orange Pi detects the key press and sends it to the server which keeps track of the players selected without sending the data back to CPEE.
 4. The server then prompts the players who selected their characters to roll for initiative and input their rolls into the user interface. Once all players enter their initiatives, and the players are ordered in decreasing initiative, the server sends the data back to CPEE, which updates the player_data with the initiative order and enters a loop to manage the initiative-based turns.
 5. 
