@@ -75,11 +75,40 @@ grid-master/
 
 ## How It Works
 
-1. CPEE sets up the initial terrain piece by randomly assigning a rotation(transposes the matrix), placing it on the grid, and updating the game state(which cells in the 12x12 hold which terrain piece, ie. terrain A or terrain E).
-2. A welcome message is displayed on the user interface and players are prompted to choose their characters.
-3. To do so, the players place their minis on character symbols on the 12x12 grid. The Orange Pi detects the key press and sends it to the server which forwards it to CPEE.
-4. Once all players are placed and the initiative is set, CPEE enters a loop to manage initiative-based turns.
-5. For each player turn:
+1. CPEE contains the template data for the grid, terrains, players, and events and stores, manipulates, and resets them as the game progresses. The JSON files are as follows:
+  * **player_data:** is an array of objects, each object representing a character with different key-value pairs that represent the traits of that character such as Health, Evasion, Speed, and Ability Scores.
+  * **terrains:** is an array of objects, each object representing a 4x4 terrain piece with different key-value pairs that represent the structure of the terrain piece:
+    * **id:** the ID of the terrain, to keep track of which terrain is being managed or manipulated.
+    * **home:** home position of the terrain piece in the terrain holder for ease of storage and to keep track of rotation, pick up, and drop off.
+    * **placement:** placement of the terrain piece on the grid, can be one of nine values, to keep track of of rotation, pick up, and drop off.
+    * **rotation:** keeps track of the rotation of the terrain piece internally.
+    * **cells:** is an array of four arrays, each array representing a row of the terrain piece, and each array contaning 4 objects, representing the columns. These objects contain the following key-value pairs:
+      * **effect:** keeps track if the cell is an entrace or exit of a certain character.
+      * **occupied:** keeps track if the cell is occupied by a player or not.
+      * **exit:** keeps track if the cell leads to an exit out of the terrain or not.
+    * **horizontal_walls:** is an array of four arrays, each array representing one of the four rows of the terrain, and the five values in each of these arrays are either set to 0, for no wall, or 1 for a wall.
+    * **vertical_walls:** is an array of four arrays, each array representing one of the four columns of the terrain, and the five values in each of these arrays are either set to 0, for no wall, or 1 for a wall.
+  * **events:** is an array of objects, each object representing one of the seven events that may occur at the top of a player's turn. The different key-value pairs of each object represent the structure and function of the individual event:
+    * **id:** the ID of the event, to keep track of which event is being used for a given player's turn.
+    * **name:** the title of the event
+    * **description:** flavor text for the description of the event. Tells the player what happens and if a roll is necessary or not.
+    * **dc:** the difficulty rating of the event which the die roll has to match or beat meaning a success, or a failure otherwise.
+    * **dice:** the number and type of dice required for the damage or hea roll, if present, for the event.
+    * **effect:** the effect of the event, such as damage or heal.
+    * **on_success:** the effect of the event if the roll was a success.
+    * **on_fail:** the effect of the event if the roll was a failure.
+  * **grid/mosaic:** is an array of twelve arrays, each array representing a row, where each row array contains 12 objects, each object representing the column in the row. The key-value pairs of these objects are as follows:
+    * **global:** an array of two values that keeps track of the row and column number of the cell itself globally.
+    * **terrainID:** contains the id of the terrain piece currently placed on that cell, null otherwise.
+    * **occupied:** contains the id of the character currently occupying that cell, null otherwise.
+    * **effect:** keeps track of the start or end condition for a specific character, null otherwise.
+    * **exit:** keeps track if a cell in a terrain piece represents an exit out of that terrain piece or not.
+2. 
+3. CPEE sets up the initial terrain piece by randomly assigning a rotation(transposes the matrix), placing it on the grid, and updating the game state(which cells in the 12x12 hold which terrain piece, ie. terrain A or terrain E).
+4. A welcome message is displayed on the user interface and players are prompted to choose their characters.
+5. To do so, the players place their minis on character symbols on the 12x12 grid. The Orange Pi detects the key press and sends it to the server which forwards it to CPEE.
+6. Once all players are placed and the initiative is set, CPEE enters a loop to manage initiative-based turns.
+7. For each player turn:
   * CPEE:
     * Determines a random event from the seven available events, decided by a random probability.
     * Sends the current player, event data, and up-to-date game state to the user interface and asynchronously waits for new player data.
